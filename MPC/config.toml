@@ -1,0 +1,47 @@
+model = "bicycle" # unicycle or bicycle 
+ref_course = 6 # 1 to 5; 6 is custom path
+nx = 4 # number of dependent variables
+nu = 2 # number of independent variables
+t = 5  # no. of time steps to look ahead
+dt = 0.1 # duration of a time step in s
+target_speed = 5.0 # target speed in m/s
+dl=1 # tick for generating path
+
+          # x , y ,  v , yaw ,acc,omega,jerk
+weights = [1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5]
+
+# bounds (angles in degree , m/s)
+max_steer = 35
+min_steer = -35
+max_speed = 30.0
+min_speed = -30.0
+max_acceleration = 10.0
+min_acceleration = -10.0
+max_d_steer = 10 # max angle to steer from current pos
+min_curvature = -1.0
+max_curvature = 1.0
+
+# mpc parameters
+n_ind_search = 10 # no. of indices to look ahead while getting intermediate reference path
+max_iter = 5  # max number of times MPC runs to get optimal solution in single call
+iter_stop = 0.01 # stop the loop earlier if there is no much change in the solution
+
+# main file 
+n_mpc = 8000 # max number of time the MPC solver is called
+stop_speed = 0.5 # stops if speed is lesser than this value
+goal_dis = 5 # considered as stopped if reached within given distance from goal
+
+# plot save path 
+tracked_plot_name = "graphs/track5_v5_with_non_ideal_noise10.png"
+v_omega_cte_plot_name = "graphs/5_v5_o_cte_with_non_ideal_noise10.png"
+
+# if you wanna see the time of each execution 
+time_it = 1 # 0 or 1
+
+# enable / disable motor noise
+motor_noise = 0 # 0: no noise, 1: gaussian noise, 2: for non-ideal motor 
+
+# parameters for non ideal motor
+n_motor = 10
+drive_motor_params = {"motor_const"= 3.0, "time_const"= 2.0, "bias"= 0.0}
+steering_motor_params = {"motor_const"= 3.0, "time_const"= 2.0, "bias"= 0.0}
