@@ -21,7 +21,7 @@ python main.py
 ---
 To do this, add a function to the dict `ref_courses`  that returns your custom path. This path can then be selected by specifying the corresponding number in the `config.toml` .
 That would be the recommended way as the user will have an option to quickly switch between paths by just changing the config.  
-Currently we are calculating the custom path using the A* star from `path_helper.py` on predefined maps present in maps directory.
+Currently we are calculating the custom path using the A* algorithm from `path_helper.py` on predefined maps present in maps directory.
 
 ### `mpc.py`
 This module has 2 classes.
